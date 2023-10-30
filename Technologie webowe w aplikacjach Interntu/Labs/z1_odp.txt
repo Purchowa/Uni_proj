@@ -1,0 +1,1 @@
+Za pomocą jakiego mechanizmu aplikacja wydrukowała w konsoli new connection?
