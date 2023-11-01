@@ -1,1 +1,4 @@
 Za pomocą jakiego mechanizmu aplikacja wydrukowała w konsoli new connection?
+
+Kiedy event 'connection' jest emitowany przez serwer to wywoływana jest funkcja podana jako drugi argument.
+Dla tego połączenia tworzony jest Socket, którym dane mogą być przesyłane i odbierane.

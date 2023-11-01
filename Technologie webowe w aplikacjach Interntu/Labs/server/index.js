@@ -15,7 +15,8 @@ app.get('/api/questions/:id', (request, response) => {
 })
 
 app.post('/api/question/', (request, response) => {
-    questions.push({}); // TODO
+    questions.push(request.body);
+    response.send(questions.at(-1));
 });
 
 app.listen(config.port, function () {
