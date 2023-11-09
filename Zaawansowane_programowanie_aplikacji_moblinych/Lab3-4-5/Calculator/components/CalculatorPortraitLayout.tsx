@@ -111,7 +111,7 @@ function CalculatorPortraitLayout(logic: CalculatorLogic): CalculatorKey[][]{
             {
                 onPress: logic.onCalculate,
                 value: '=',
-                style: {backgroundColor: 'orange'},
+                style: {backgroundColor: '#ff9933'},
             } 
         ] 
     ];

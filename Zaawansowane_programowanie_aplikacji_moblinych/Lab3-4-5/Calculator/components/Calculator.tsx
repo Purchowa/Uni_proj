@@ -1,19 +1,27 @@
 import {
     View,
     Text,
-    TouchableOpacity
+    TouchableOpacity,
+    Platform
 } from 'react-native';
 import { evaluate } from 'mathjs';
+import SplashScreen from 'react-native-splash-screen';
 
 import { CalculatorLogic } from './CalculatorLogic';
 import { Orientation } from './Orientation';
 import { CalculatorLayout } from './CalculatorLayout'
 import CalculatorKey from './CalculatorKey';
 import useAritmeticStack from './useArithmeticStack'
+import { useEffect } from 'react';
 
 export default function Calculator(): JSX.Element{
-    const stack = useAritmeticStack();
+    useEffect( () => {
+        if (Platform.OS === 'android'){
+            SplashScreen.hide();
+        }
+    }, []);
 
+    const stack = useAritmeticStack();
     const isFunctionValidToUse = (!stack.isEmpty() && !stack.isHeadAnOperator());
 
     const calculatorLogic: CalculatorLogic = {
