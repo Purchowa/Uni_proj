@@ -6,6 +6,7 @@ import { Quiz } from '../types/QuizType';
 import { Answers, AnswerHandler } from '../components/Answers';
 import { EndScreen } from '../components/EndScreen';
 import { globalStyle } from '../styles/style';
+import { getTest } from '../api/GetQuizData';
 
 export default function SolveQuiz({ route, navigation }: QuizProps) {
     const [timeInSec, setTime] = useState(0);
@@ -17,22 +18,11 @@ export default function SolveQuiz({ route, navigation }: QuizProps) {
 
     const linearProgressDurationInMs = 100;
 
-    const getQuizData = async () => {
-        try {
-            const response = await fetch('https://tgryl.pl/quiz/test/' + route.params.pickedQuizID);
-            const jsonResponse: Quiz = await response.json();
-            setQuizData(jsonResponse);
-        }
-        catch (error) {
-            console.error(error);
-        }
-        finally {
-            setQuizDataLoading(false);
-        }
-    }
-
     useEffect(() => {
-        getQuizData();
+        (async () => {
+            setQuizData(await getTest(route.params.pickedQuizID));
+            setQuizDataLoading(false);
+        })();
     }, []);
 
     const answerHandler: AnswerHandler = {

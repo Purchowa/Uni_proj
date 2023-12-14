@@ -13,3 +13,11 @@ export type Answer = {
     content: string,
     isCorrect: boolean,
 };
+
+export type Result = {
+    nick: string,
+    score: number,
+    total: number,
+    type: string,
+    createdOn: string,
+}

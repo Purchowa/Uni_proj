@@ -1,13 +1,6 @@
 import { useState } from 'react'
 import { View, Text, FlatList, StyleSheet } from 'react-native';
-
-type Result = {
-    nick: string,
-    score: number,
-    total: number,
-    type: string,
-    date: string, // in future might be Date
-}
+import { Result } from '../types/QuizType';
 
 function ResultsHeader() {
 
@@ -35,7 +28,7 @@ function SingleResult({ prop }: { prop: Result }) {
             <Text style={resultStyles.text}>{prop.nick}</Text>
             <Text style={resultStyles.text}>{prop.score}/{prop.total}</Text>
             <Text style={resultStyles.text}>{prop.type}</Text>
-            <Text style={resultStyles.text}>{prop.date}</Text>
+            <Text style={resultStyles.text}>{prop.createdOn}</Text>
         </View>
     );
 }
@@ -56,26 +49,26 @@ export default function UserResult() {
     const [refreshing, setRefreshing] = useState(false);
 
     const results: Result[] = [
-        {nick: 'Maciej', score: 23, total: 30, type: 'Historia', date: '29.11.2023'},
-        {nick: 'Andrzejjj', score: 23, total: 30, type: 'Historia', date: '29.11.2023'},
-        {nick: 'Józek', score: 11, total: 30, type: 'Bzdury', date: '12.12.2012'},
-        {nick: 'Zbigniew', score: 30, total: 30, type: 'IT', date: '29.11.2023'},
-        { nick: 'Maciej', score: 23, total: 30, type: 'Historia', date: '29.11.2023' },
-        { nick: 'Andrzejjj', score: 23, total: 30, type: 'Historia', date: '29.11.2023' },
-        { nick: 'Józek', score: 11, total: 30, type: 'Bzdury', date: '12.12.2012' },
-        { nick: 'Zbigniew', score: 30, total: 30, type: 'IT', date: '29.11.2023' },
-        { nick: 'Maciej', score: 23, total: 30, type: 'Historia', date: '29.11.2023' },
-        { nick: 'Andrzejjj', score: 23, total: 30, type: 'Historia', date: '29.11.2023' },
-        { nick: 'Józek', score: 11, total: 30, type: 'Bzdury', date: '12.12.2012' },
-        { nick: 'Zbigniew', score: 30, total: 30, type: 'IT', date: '29.11.2023' },
-        { nick: 'Maciej', score: 23, total: 30, type: 'Historia', date: '29.11.2023' },
-        { nick: 'Andrzejjj', score: 23, total: 30, type: 'Historia', date: '29.11.2023' },
-        { nick: 'Józek', score: 11, total: 30, type: 'Bzdury', date: '12.12.2012' },
-        { nick: 'Zbigniew', score: 30, total: 30, type: 'IT', date: '29.11.2023' },
-        { nick: 'Maciej', score: 23, total: 30, type: 'Historia', date: '29.11.2023' },
-        { nick: 'Andrzejjj', score: 23, total: 30, type: 'Historia', date: '29.11.2023' },
-        { nick: 'Józek', score: 11, total: 30, type: 'Bzdury', date: '12.12.2012' },
-        { nick: 'Zbigniew', score: 30, total: 30, type: 'IT', date: '29.11.2023' },
+        { nick: 'Maciej', score: 23, total: 30, type: 'Historia', createdOn: '29.11.2023' },
+        { nick: 'Andrzejjj', score: 23, total: 30, type: 'Historia', createdOn: '29.11.2023' },
+        { nick: 'Józek', score: 11, total: 30, type: 'Bzdury', createdOn: '12.12.2012' },
+        { nick: 'Zbigniew', score: 30, total: 30, type: 'IT', createdOn: '29.11.2023' },
+        { nick: 'Maciej', score: 23, total: 30, type: 'Historia', createdOn: '29.11.2023' },
+        { nick: 'Andrzejjj', score: 23, total: 30, type: 'Historia', createdOn: '29.11.2023' },
+        { nick: 'Józek', score: 11, total: 30, type: 'Bzdury', createdOn: '12.12.2012' },
+        { nick: 'Zbigniew', score: 30, total: 30, type: 'IT', createdOn: '29.11.2023' },
+        { nick: 'Maciej', score: 23, total: 30, type: 'Historia', createdOn: '29.11.2023' },
+        { nick: 'Andrzejjj', score: 23, total: 30, type: 'Historia', createdOn: '29.11.2023' },
+        { nick: 'Józek', score: 11, total: 30, type: 'Bzdury', createdOn: '12.12.2012' },
+        { nick: 'Zbigniew', score: 30, total: 30, type: 'IT', createdOn: '29.11.2023' },
+        { nick: 'Maciej', score: 23, total: 30, type: 'Historia', createdOn: '29.11.2023' },
+        { nick: 'Andrzejjj', score: 23, total: 30, type: 'Historia', createdOn: '29.11.2023' },
+        { nick: 'Józek', score: 11, total: 30, type: 'Bzdury', createdOn: '12.12.2012' },
+        { nick: 'Zbigniew', score: 30, total: 30, type: 'IT', createdOn: '29.11.2023' },
+        { nick: 'Maciej', score: 23, total: 30, type: 'Historia', createdOn: '29.11.2023' },
+        { nick: 'Andrzejjj', score: 23, total: 30, type: 'Historia', createdOn: '29.11.2023' },
+        { nick: 'Józek', score: 11, total: 30, type: 'Bzdury', createdOn: '12.12.2012' },
+        { nick: 'Zbigniew', score: 30, total: 30, type: 'IT', createdOn: '29.11.2023' },
         
     ];
 
