@@ -4,13 +4,11 @@ import { CheckResults}  from '../components/CheckResults';
 import { HomeProps } from '../navigation/NavParams/DrawerNavProps';
 
 export default function Home({ route, navigation }: HomeProps) {
-    let mockSummary = 'Tekst opisujacy quiz. Czego dotyczy, co sie w nim znajduje itd...'
-
     return(
         <View style={style.container}>
             <ScrollView>
-                {route.params.quizIDs.map((quizID, index) => (
-                    <QuizCard key={index} id={index + 1} summary={mockSummary} onQuizPress={() => { navigation.navigate('Quiz', { pickedQuizID: quizID, quizIDs: route.params.quizIDs }) }}></QuizCard>
+                {route.params.quizDesc.map((quiz, index) => (
+                    <QuizCard key={index} quizDesc={quiz} onQuizPress={() => { navigation.navigate('Quiz', { pickedQuizID: quiz.id, quizIDs: [] }) }}></QuizCard>
                 ))}
             </ScrollView>
             <CheckResults route={route} navigation={navigation} />

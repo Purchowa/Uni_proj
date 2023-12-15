@@ -1,5 +1,7 @@
+import { QuizDesc } from "../../types/QuizType";
+
 export type DrawerNavParamList = {
-    Home: { quizIDs: string[] },
+    Home: { quizDesc: QuizDesc[] },
     Quiz: { pickedQuizID: string, quizIDs: string[] },
     Results: undefined
 };

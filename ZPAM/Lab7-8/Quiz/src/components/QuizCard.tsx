@@ -1,17 +1,17 @@
 import { View, Text, StyleSheet, TouchableHighlight} from 'react-native';
+import { QuizDesc } from '../types/QuizType';
 
 type QuizInfo = {
-    id: number;
-    summary: string;
+    quizDesc: QuizDesc,
     onQuizPress: () => void;
 }
 
-export function QuizCard(prop: QuizInfo){
+export function QuizCard(prop: QuizInfo) {
     return (
         <TouchableHighlight style={style.container} onPress={prop.onQuizPress} underlayColor='#fbcdef'>
             <View style={style.touchableCard}>
-                <Text style={[style.header, style.text]}>Quiz {prop.id}</Text>
-                <Text style={[style.summary, style.text]}>{prop.summary}</Text>
+                <Text style={[style.header, style.text]}>{prop.quizDesc.name}</Text>
+                <Text style={[style.summary, style.text]}>{prop.quizDesc.description}</Text>
             </View>
         </TouchableHighlight>
     );

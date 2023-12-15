@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 import { Result } from '../types/QuizType';
+import { getEveryResult } from '../api/GetQuizData'
 
 function ResultsHeader() {
 
@@ -47,37 +48,17 @@ function Separator() {
 export default function UserResult() {
 
     const [refreshing, setRefreshing] = useState(false);
+    const [results, setResults] = useState<Result[]>();
 
-    const results: Result[] = [
-        { nick: 'Maciej', score: 23, total: 30, type: 'Historia', createdOn: '29.11.2023' },
-        { nick: 'Andrzejjj', score: 23, total: 30, type: 'Historia', createdOn: '29.11.2023' },
-        { nick: 'Józek', score: 11, total: 30, type: 'Bzdury', createdOn: '12.12.2012' },
-        { nick: 'Zbigniew', score: 30, total: 30, type: 'IT', createdOn: '29.11.2023' },
-        { nick: 'Maciej', score: 23, total: 30, type: 'Historia', createdOn: '29.11.2023' },
-        { nick: 'Andrzejjj', score: 23, total: 30, type: 'Historia', createdOn: '29.11.2023' },
-        { nick: 'Józek', score: 11, total: 30, type: 'Bzdury', createdOn: '12.12.2012' },
-        { nick: 'Zbigniew', score: 30, total: 30, type: 'IT', createdOn: '29.11.2023' },
-        { nick: 'Maciej', score: 23, total: 30, type: 'Historia', createdOn: '29.11.2023' },
-        { nick: 'Andrzejjj', score: 23, total: 30, type: 'Historia', createdOn: '29.11.2023' },
-        { nick: 'Józek', score: 11, total: 30, type: 'Bzdury', createdOn: '12.12.2012' },
-        { nick: 'Zbigniew', score: 30, total: 30, type: 'IT', createdOn: '29.11.2023' },
-        { nick: 'Maciej', score: 23, total: 30, type: 'Historia', createdOn: '29.11.2023' },
-        { nick: 'Andrzejjj', score: 23, total: 30, type: 'Historia', createdOn: '29.11.2023' },
-        { nick: 'Józek', score: 11, total: 30, type: 'Bzdury', createdOn: '12.12.2012' },
-        { nick: 'Zbigniew', score: 30, total: 30, type: 'IT', createdOn: '29.11.2023' },
-        { nick: 'Maciej', score: 23, total: 30, type: 'Historia', createdOn: '29.11.2023' },
-        { nick: 'Andrzejjj', score: 23, total: 30, type: 'Historia', createdOn: '29.11.2023' },
-        { nick: 'Józek', score: 11, total: 30, type: 'Bzdury', createdOn: '12.12.2012' },
-        { nick: 'Zbigniew', score: 30, total: 30, type: 'IT', createdOn: '29.11.2023' },
-        
-    ];
-
-    const onRefreshMock = () => {
+    const getResults = async () => {
         setRefreshing(true);
-        setTimeout(() => {
-            setRefreshing(false);
-        }, 500);
-    };
+        setResults(await getEveryResult());
+        setRefreshing(false);
+    }
+
+    useEffect(() => {
+        getResults();
+    }, []);
 
     return(
         <View style={listStyles.container}>
@@ -87,7 +68,7 @@ export default function UserResult() {
                 ListHeaderComponent={ResultsHeader}
                 ItemSeparatorComponent={Separator}
                 refreshing={refreshing}
-                onRefresh={onRefreshMock}
+                onRefresh={getResults}
             />
         </View>
     );

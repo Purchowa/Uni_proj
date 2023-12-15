@@ -1,3 +1,12 @@
+export type QuizDesc = {
+    id: string,
+    name: string,
+    description: string,
+    tags: string[],
+    level: string,
+    numberOfTasks: number
+}
+
 export type Quiz = {
     name: string,
     tasks: Task[],

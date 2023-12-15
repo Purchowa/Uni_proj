@@ -1,5 +1,4 @@
-import { Quiz } from '../types/QuizType';
-import { Result } from '../types/QuizType';
+import { Quiz, Result, QuizDesc } from '../types/QuizType';
 
 async function getData<Union = Quiz | Result>(endpoint: string) {
     let jsonResponse = {} as Union;
@@ -19,10 +18,10 @@ export async function getTest(id: string) {
     return await getData<Quiz>('https://tgryl.pl/quiz/test/' + id);
 }
 
-export async function getEveryTest() {
-    return await getData<>('https://tgryl.pl/quiz/tests');
+export async function getEveryTestDesc() {
+    return await getData<QuizDesc[]>('https://tgryl.pl/quiz/tests');
 }
 
 export async function getEveryResult(last = 20) {
-    return await getData<Result>('https://tgryl.pl/quiz/results?last=' + last);
+    return await getData<Result[]>('https://tgryl.pl/quiz/results?last=' + last);
 }
