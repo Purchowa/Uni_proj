@@ -5,7 +5,7 @@ import { Request, Response, NextFunction, Router } from 'express';
 
 class PostController implements Controller {
     public path = '/api/posts';
-    public pathSinglePost = '/api/post/:title';
+    public pathSinglePost = '/api/post';
     public router = Router();
 
     constructor() {
@@ -32,11 +32,11 @@ class PostController implements Controller {
 
     private getSinglePost = async (request: Request, response: Response) => {
         try {
-            const posts = await PostModel.find({ title: request.params.title }); // find by title
-            // Odpowiedź JSON z obiektami postów
+            const posts = await PostModel.find({ title: 'Post 1' }); // find by title
+
             response.json(posts);
         } catch (error) {
-            // Obsługa błędów
+
             console.error('Błąd podczas pobierania postów:', error);
             response.status(500).json({ error: 'Wystąpił błąd podczas pobierania postów' });
         }
