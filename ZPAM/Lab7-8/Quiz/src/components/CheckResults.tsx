@@ -5,7 +5,7 @@ import { HomeProps } from '../navigation/NavParams/DrawerNavProps';
 export function CheckResults({ navigation }: HomeProps) {
     return (
         <View style={style.container}>
-            <Text style={style.header}>Zobacz swoje wyniki</Text>
+            <Text style={globalStyle.header}>Zobacz swoje wyniki</Text>
             <TouchableOpacity style={globalStyle.button} onPress={() => navigation.navigate('Results')}>
                 <Text style={globalStyle.button.text}>Odkryj</Text>
             </TouchableOpacity>
@@ -15,8 +15,8 @@ export function CheckResults({ navigation }: HomeProps) {
 
 const style = StyleSheet.create({
     container: {
+        marginTop: 'auto',
         alignItems: 'center',
-        flexDirection: 'column',
         padding: 8,
     },
 

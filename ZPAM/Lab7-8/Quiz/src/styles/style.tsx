@@ -7,21 +7,37 @@ const globalStyle = StyleSheet.create({
         paddingVertical: 8,
         paddingHorizontal: 16,
         margin: 4,
-        
+
         text: {
             fontSize: 20,
             color: 'white',
-            textAlign: 'center'    
+            textAlign: 'center',
+            fontFamily: 'Montserrat-SemiBold'
         }
     },
 
     header: {
-        marginVertical: 8,
+        marginVertical: 6,
         textAlign: 'center',
-        fontSize: 30,
-        fontWeight: 'bold',
-        color: 'black'
-    },
+        fontSize: 26,
+        color: 'black',
+        fontFamily: 'Poppins-Bold',
+    }
 });
 
-export { globalStyle };
+const fontFamily = StyleSheet.create({
+    button: {
+        fontFamily: 'Montserrat-SemiBold'
+    },
+    header: {
+        fontFamily: 'Poppins-Bold',
+    },
+    content: {
+        fontFamily: 'Poppins-Regular',
+    },
+    info: {
+        fontFamily: 'Poppins-Medium',
+    }
+});
+
+export { globalStyle, fontFamily };

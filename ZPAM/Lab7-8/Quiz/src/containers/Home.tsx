@@ -8,7 +8,7 @@ export default function Home({ route, navigation }: HomeProps) {
         <View style={style.container}>
             <ScrollView>
                 {route.params.quizDesc.map((quiz, index) => (
-                    <QuizCard key={index} quizDesc={quiz} onQuizPress={() => { navigation.navigate('Quiz', { pickedQuizID: quiz.id, quizIDs: [] }) }}></QuizCard>
+                    <QuizCard key={index} quizDesc={quiz} onQuizPress={() => { navigation.navigate('Quiz', { pickedQuizID: quiz.id, quizType: quiz.tags.join(','), quizDesc: route.params.quizDesc }) }}></QuizCard>
                 ))}
             </ScrollView>
             <CheckResults route={route} navigation={navigation} />
@@ -18,6 +18,6 @@ export default function Home({ route, navigation }: HomeProps) {
 
 const style = StyleSheet.create({
     container: {
-        flexGrow: 1
+        flexGrow: 1,
     }
 });

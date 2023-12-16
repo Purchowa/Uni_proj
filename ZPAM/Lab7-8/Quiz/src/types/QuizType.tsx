@@ -30,3 +30,10 @@ export type Result = {
     type: string,
     createdOn: string,
 }
+
+export type UserScore = {
+    nick: string,
+    score: number,
+    total: number,
+    type: string,
+}

@@ -8,7 +8,7 @@ import SolveQuiz from '../containers/SolveQuiz';
 import UserResult from '../containers/UserResult';
 import { AppRegulations } from '../components/AppRegulations';
 import { DrawerNavParamList } from './NavParams/DrawerNavParamList';
-import { QuizDesc } from '../types/QuizType';
+import { Quiz, QuizDesc } from '../types/QuizType';
 import { getEveryTestDesc } from '../api/GetQuizData';
 
 const Drawer = createDrawerNavigator<DrawerNavParamList>();
@@ -16,11 +16,9 @@ const Drawer = createDrawerNavigator<DrawerNavParamList>();
 export default function MainNav() {
   const [quizDesc, setQuizDesc] = useState<QuizDesc[]>();
 
-  const quizIDs: string[] = [
-    '62032610069ef9b2616c761e',
-    '62032610069ef9b2616c761c',
-    '62032610069ef9b2616c761d'
-  ];
+  const pickRandomIndex = (quizContainer: QuizDesc[]) => {
+    return Math.floor(Math.random() * quizContainer.length);
+  }
 
   useEffect(() => {
     (async () => {
@@ -32,10 +30,10 @@ export default function MainNav() {
   return (
     <>
       <NavigationContainer>
-        {quizDesc &&
+        {quizDesc && 
           <Drawer.Navigator initialRouteName='Home'>
             <Drawer.Screen name="Home" component={Home} initialParams={{ quizDesc: quizDesc }} />
-            <Drawer.Screen name="Quiz" component={SolveQuiz} initialParams={{ quizIDs: quizIDs }} options={{ unmountOnBlur: true }} />
+            <Drawer.Screen name="Quiz" component={SolveQuiz} initialParams={{ pickedQuizID: quizDesc[0].id, quizType: quizDesc[0].tags.join(','), quizDesc: quizDesc }} options={{ unmountOnBlur: true }} />
             <Drawer.Screen name="Results" component={UserResult} />
           </Drawer.Navigator>}
       </NavigationContainer>

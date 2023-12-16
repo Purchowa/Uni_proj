@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 import { Result } from '../types/QuizType';
 import { getEveryResult } from '../api/GetQuizData'
+import { fontFamily } from '../styles/style';
+import React from 'react';
 
 function ResultsHeader() {
 
@@ -13,10 +15,10 @@ function ResultsHeader() {
     ];
 
     return (
-        <View style={resultStyles.container}>
+        <View style={[resultStyles.header]}>
             {
                 headerData.map((column, idx) =>
-                    <Text style={[resultStyles.text, resultStyles.header]} key={idx} >{column}</Text>
+                    <Text style={[resultStyles.text, fontFamily.header]} key={idx} >{column}</Text>
                 )
             }
         </View>
@@ -24,12 +26,14 @@ function ResultsHeader() {
 }
 
 function SingleResult({ prop }: { prop: Result }) {
+    const textStyle = [resultStyles.text, fontFamily.content];
+
     return(
         <View style={resultStyles.container}>
-            <Text style={resultStyles.text}>{prop.nick}</Text>
-            <Text style={resultStyles.text}>{prop.score}/{prop.total}</Text>
-            <Text style={resultStyles.text}>{prop.type}</Text>
-            <Text style={resultStyles.text}>{prop.createdOn}</Text>
+            <Text style={textStyle}>{prop.nick}</Text>
+            <Text style={textStyle}>{prop.score}/{prop.total}</Text>
+            <Text style={textStyle}>{prop.type}</Text>
+            <Text style={textStyle}>{prop.createdOn}</Text>
         </View>
     );
 }
@@ -66,6 +70,8 @@ export default function UserResult() {
                 data={results}
                 renderItem={({item}) => <SingleResult prop={item}/>} 
                 ListHeaderComponent={ResultsHeader}
+                stickyHeaderIndices={[0]}
+                stickyHeaderHiddenOnScroll={true}
                 ItemSeparatorComponent={Separator}
                 refreshing={refreshing}
                 onRefresh={getResults}
@@ -78,26 +84,28 @@ export default function UserResult() {
 const resultStyles = StyleSheet.create({
     container: {
         flexDirection: 'row',
-        marginHorizontal: 8
+        marginHorizontal: 4,
     },
 
     text: {
-        fontSize: 18,
+        fontSize: 14,
         color: 'black',
         width: '25%',
         textAlign: 'center',
-        marginVertical: 8,
+        marginVertical: 4,
+        paddingHorizontal: 4,
         flexShrink: 1,
     },
-    
+
     header: {
-        fontWeight: 'bold',
+        backgroundColor: 'white',
+        flexDirection: 'row',
     }
 });
 
 
 const listStyles = StyleSheet.create({
     container: {
-        margin: 4
+        margin: 2
     }
 });

@@ -5,7 +5,7 @@ import { QuizProps } from '../navigation/NavParams/DrawerNavProps';
 import { Quiz } from '../types/QuizType';
 import { Answers, AnswerHandler } from '../components/Answers';
 import { EndScreen } from '../components/EndScreen';
-import { globalStyle } from '../styles/style';
+import { globalStyle, fontFamily } from '../styles/style';
 import { getTest } from '../api/GetQuizData';
 
 export default function SolveQuiz({ route, navigation }: QuizProps) {
@@ -72,11 +72,11 @@ export default function SolveQuiz({ route, navigation }: QuizProps) {
                             <View>
                                 <Text style={globalStyle.header}>{quizData.name}</Text>
                                 <View style={style.quizInfo}>
-                                    <Text style={style.quizInfo.text}>Pytanie: {taskNumber + 1}</Text>
-                                    <Text style={style.quizInfo.text}>Całkowity czas: {quizData.tasks[taskNumber].duration} sekund</Text>
+                                    <Text style={[style.quizInfo.text, fontFamily.info]}>Pytanie: {taskNumber + 1}</Text>
+                                    <Text style={[style.quizInfo.text, fontFamily.info]}>Całkowity czas: {quizData.tasks[taskNumber].duration} sekund</Text>
                                 </View>
                                 <LinearProgress animation={{ duration: linearProgressDurationInMs }} variant='determinate' color='orange' style={style.progressBar} value={timeInSec / quizData.tasks[taskNumber].duration} />
-                                <Text style={style.questionContent}>{quizData.tasks[taskNumber].question}</Text>
+                                <Text style={[style.questionContent, fontFamily.content]}>{quizData.tasks[taskNumber].question}</Text>
                             </View>
                             <Answers answers={quizData.tasks[taskNumber].answers} answerHandler={answerHandler} />
                         </View>
@@ -84,8 +84,9 @@ export default function SolveQuiz({ route, navigation }: QuizProps) {
                             isVisible={isEndScreenVisible}
                             points={points}
                             totalPoints={quizData.tasks.length}
+                            type={route.params.quizType}
                             retryQuiz={() => { setTime(0); setTaskNumber(0); changeEndScreenVisibility(false); }}
-                            navigateHome={() => navigation.navigate('Home', { quizIDs: route.params.quizIDs })}
+                            navigateHome={() => navigation.navigate('Home', { quizDesc: route.params.quizDesc })}
                         />
                     </>
                 )}

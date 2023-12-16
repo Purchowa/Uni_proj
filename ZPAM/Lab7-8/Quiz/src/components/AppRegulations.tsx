@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Overlay } from '@rneui/base';
 import { useEffect, useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { globalStyle } from '../styles/style';
+import { globalStyle, fontFamily } from '../styles/style';
 
 function mapStringToBoolean(value: string): boolean {
     return value === '0' ? false : true;
@@ -46,10 +46,10 @@ export function AppRegulations() {
     if (areRegulationsShown) {
         return (
             <Overlay isVisible={areRegulationsShown} overlayStyle={styles.container}>
-                <Text style={globalStyle.header}>
+                <Text style={[globalStyle.header]}>
                     Regulamin aplikacji
                 </Text>
-                <Text style={styles.content}>
+                <Text style={[styles.content, fontFamily.content]}>
                     Miłość cierpliwa jest, łaskawa jest. Miłość nie zazdrości, nie szuka poklasku, nie unosi się pychą; nie dopuszcza się bezwstydu, nie szuka swego, nie unosi się gniewem, nie pamięta złego, nie cieszy się z niesprawiedliwości, lecz współweseli się z prawdą. Wszystko znosi, wszystkiemu wierzy, we wszystkim pokłada nadzieję, wszystko przetrzyma.
                 </Text>
                 <TouchableOpacity style={[globalStyle.button, { marginTop: 16 }]} onPress={() => { saveToStorage('0') }}>

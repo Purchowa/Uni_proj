@@ -1,5 +1,6 @@
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import { Answer } from '../types/QuizType';
+import { fontFamily, globalStyle } from "../styles/style";
 
 export type AnswerHandler = {
     correctAnswer: () => void,
@@ -21,7 +22,7 @@ function SingleAnswer({ answer, answerHandler }: { answer: Answer, answerHandler
             style={[style.answerContainer.button, style.answerContainer.waitingButton]}
             onPress={onAnswer}
         >
-            <Text adjustsFontSizeToFit={true} numberOfLines={1} style={style.answerContainer.button.text}>{answer.content}</Text>
+            <Text adjustsFontSizeToFit={true} numberOfLines={2} style={[globalStyle.button.text, fontFamily.button, style.answerContainer.button.text]}>{answer.content}</Text>
         </TouchableOpacity>
     );
 }
@@ -45,13 +46,10 @@ const style = StyleSheet.create({
         rowGap: 20,
 
         button: {
-
             borderRadius: 6,
             text: {
-                color: 'white',
-                fontSize: 26,
-                textAlign: 'center',
-                padding: 16
+                fontSize: 30,
+                padding: 16,
             }
         },
 

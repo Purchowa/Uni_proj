@@ -1,6 +1,6 @@
 import { Quiz, Result, QuizDesc } from '../types/QuizType';
 
-async function getData<Union = Quiz | Result>(endpoint: string) {
+async function getData<Union = Quiz | Result | QuizDesc>(endpoint: string) {
     let jsonResponse = {} as Union;
     try {
         const response = await fetch(endpoint);
