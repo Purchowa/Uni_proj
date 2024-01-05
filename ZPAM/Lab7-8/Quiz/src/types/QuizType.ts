@@ -1,4 +1,4 @@
-export type QuizDesc = {
+export type QuizSummary = {
     id: string,
     name: string,
     description: string,
@@ -7,7 +7,7 @@ export type QuizDesc = {
     numberOfTasks: number
 }
 
-export type Quiz = {
+export type SingleQuiz = {
     name: string,
     tasks: Task[],
 };

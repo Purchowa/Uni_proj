@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import { LinearProgress } from '@rneui/themed';
+
 import { QuizProps } from '../navigation/NavParams/DrawerNavProps';
-import { Quiz } from '../types/QuizType';
+import { SingleQuiz } from '../types/QuizType';
 import { Answers, AnswerHandler } from '../components/Answers';
 import { EndScreen } from '../components/EndScreen';
 import { globalStyle, fontFamily } from '../styles/style';
@@ -12,7 +13,7 @@ export default function SolveQuiz({ route, navigation }: QuizProps) {
     const [timeInSec, setTime] = useState(0);
     const [isEndScreenVisible, changeEndScreenVisibility] = useState(false);
     const [isQuizDataLoading, setQuizDataLoading] = useState(true);
-    const [quizData, setQuizData] = useState<Quiz>({ name: 'test', tasks: [{ question: 'ala', answers: [{ content: 'dada', isCorrect: false }], duration: 3 }] });
+    const [quizData, setQuizData] = useState<SingleQuiz>({ name: 'test', tasks: [{ question: 'ala', answers: [{ content: 'dada', isCorrect: false }], duration: 3 }] });
     const [points, setPoints] = useState(0);
     const [taskNumber, setTaskNumber] = useState(0);
 
@@ -43,14 +44,17 @@ export default function SolveQuiz({ route, navigation }: QuizProps) {
 
     const [timeoutID, setTimeoutID] = useState<NodeJS.Timeout>();
     useEffect(() => {
+        let id: NodeJS.Timeout;
         if (timeInSec < quizData.tasks[taskNumber].duration && !isEndScreenVisible) {
-            setTimeoutID(setTimeout(() => {
+            id = setTimeout(() => {
                 setTime(timeInSec + 1);
-            }, 1000));
+            }, 1000);
+            setTimeoutID(id);
         }
         else {
             answerHandler.anyAnswer();
         }
+        return () => clearTimeout(id);
     }, [timeInSec]);
 
     useEffect(() => {
@@ -86,7 +90,7 @@ export default function SolveQuiz({ route, navigation }: QuizProps) {
                             totalPoints={quizData.tasks.length}
                             type={route.params.quizType}
                             retryQuiz={() => { setTime(0); setTaskNumber(0); changeEndScreenVisibility(false); }}
-                            navigateHome={() => navigation.navigate('Home', { quizDesc: route.params.quizDesc })}
+                            navigateHome={() => navigation.navigate('Home', { quizSummary: route.params.quizSummary })}
                         />
                     </>
                 )}
@@ -96,8 +100,7 @@ export default function SolveQuiz({ route, navigation }: QuizProps) {
 }
 
 const style = StyleSheet.create({
-    mainContainer:{
-        flexDirection: 'column',
+    mainContainer: {
         justifyContent: 'space-between',
         padding: 12,
         height: '100%',

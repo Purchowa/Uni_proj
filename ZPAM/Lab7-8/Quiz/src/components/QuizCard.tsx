@@ -1,9 +1,9 @@
 import { View, Text, StyleSheet, TouchableHighlight} from 'react-native';
-import { QuizDesc } from '../types/QuizType';
+import { QuizSummary } from '../types/QuizType';
 import { globalStyle, fontFamily } from '../styles/style';
 
 type QuizInfo = {
-    quizDesc: QuizDesc,
+    quizDesc: QuizSummary,
     onQuizPress: () => void;
 }
 

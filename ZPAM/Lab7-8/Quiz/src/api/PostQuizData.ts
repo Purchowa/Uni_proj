@@ -1,3 +1,4 @@
+import { fetch as netFetch } from "@react-native-community/netinfo";
 import { UserScore } from "../types/QuizType";
 
 async function postData<Union = UserScore>(endpoint: string, data: Union) {
@@ -23,5 +24,9 @@ async function postData<Union = UserScore>(endpoint: string, data: Union) {
 }
 
 export async function postUserScore(data: UserScore) {
-    return await postData('https://tgryl.pl/quiz/result', data);
+    netFetch().then(state => {
+        if (state.isConnected) {
+            return postData('https://tgryl.pl/quiz/result', data);
+        }
+    })
 }
