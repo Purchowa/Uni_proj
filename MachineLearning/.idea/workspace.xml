@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="a22ce0b6-f85e-46c5-8369-5ace9b462226" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../ZPAM/Lab7-8/Quiz/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ZPAM/Lab7-8/Quiz/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ZPAM/Lab7-8/Quiz/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ZPAM/Lab7-8/Quiz/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ZPAM/Lab7-8/Quiz/src/api/GetQuizData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../ZPAM/Lab7-8/Quiz/src/api/GetQuizData.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ZPAM/Lab7-8/Quiz/src/components/Answers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../ZPAM/Lab7-8/Quiz/src/components/Answers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ZPAM/Lab7-8/Quiz/src/components/QuizCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../ZPAM/Lab7-8/Quiz/src/components/QuizCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ZPAM/Lab7-8/Quiz/src/containers/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../ZPAM/Lab7-8/Quiz/src/containers/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ZPAM/Lab7-8/Quiz/src/containers/SolveQuiz.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../ZPAM/Lab7-8/Quiz/src/containers/SolveQuiz.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ZPAM/Lab7-8/Quiz/src/navigation/MainNav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../ZPAM/Lab7-8/Quiz/src/navigation/MainNav.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ZPAM/Lab7-8/Quiz/src/navigation/NavParams/DrawerNavParamList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../ZPAM/Lab7-8/Quiz/src/navigation/NavParams/DrawerNavParamList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ZPAM/Lab7-8/Quiz/src/types/QuizType.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../ZPAM/Lab7-8/Quiz/src/types/QuizType.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/MachineLearning.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MachineLearning.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab_5/ML_Lab5.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Lab_5/ML_Lab5.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,10 +17,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2aPYHZ5JjnwO8u2sajtHVklr0Vx" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -36,6 +32,10 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -48,7 +48,11 @@
       <option name="presentableId" value="Default" />
       <updated>1704221595239</updated>
       <workItem from="1704221597434" duration="92000" />
+      <workItem from="1704420434868" duration="928000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>

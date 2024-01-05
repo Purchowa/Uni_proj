@@ -49,12 +49,14 @@ export async function getEveryTestDesc(): Promise<QuizSummary[]> {
 }
 
 export async function getEveryResult(last = 20): Promise<Result[]> {
-    netFetch().then(state => {
+    let result: Result[] = [];
+
+    await netFetch().then(async state => {
         if (state.isConnected) {
-            return getData<Result[]>('https://tgryl.pl/quiz/results?last=' + last);
+            result = await getData<Result[]>('https://tgryl.pl/quiz/results?last=' + last);
         }
     })
-    return [];
+    return result;
 }
 
 export async function feedDBWithQuizData() {
