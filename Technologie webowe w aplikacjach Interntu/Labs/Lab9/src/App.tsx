@@ -7,6 +7,7 @@ import Charts from './components/charts';
 
 import { BrowserRouter as Router, Routes, Route, Link }
   from 'react-router-dom';
+import Chat from './components/chat';
 
 function App() {
 
@@ -25,12 +26,16 @@ function App() {
         <Link to="/charts" style={{ padding: 5 }}>
           Charts
         </Link>
+        <Link to="/chat" style={{ padding: 5 }}>
+          Chat
+        </Link>
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/posts" element={<Posts />} />
         <Route path="/add_post" element={<AddPost />} />
         <Route path="/charts" element={<Charts />} />
+        <Route path="/chat" element={<Chat />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </ Router>
